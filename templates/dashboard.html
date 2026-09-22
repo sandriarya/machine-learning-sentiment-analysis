@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="stats-grid">
+    <div class="stat-card total">
+        <div class="stat-top">
+            <div>
+                <span>TOTAL DATA KOMENTAR</span>
+                <h2>{{ total_data }}</h2>
+                <small>Komentar</small>
+            </div>
+
+            <div class="icon-circle red">
+                <i class="bi bi-chat-dots"></i>
+            </div>
+        </div>
+        <div class="spark">
+    <div id="spark-total"></div>
+</div>
+    </div>
+
+    <div class="stat-card positif">
+        <div class="stat-top">
+            <div>
+                <span>SENTIMEN POSITIF</span>
+                <h2>{{ jumlah_positif }}</h2>
+                <small>{{ persen_positif }}% dari total data</small>
+            </div>
+
+            <div class="icon-circle green">
+                <i class="bi bi-emoji-smile"></i>
+            </div>
+        </div>
+        <div class="spark">
+    <div id="spark-positif"></div>
+</div>
+
+    </div>
+    <div class="stat-card netral">
+        <div class="stat-top">
+            <div>
+                <span>SENTIMEN NETRAL</span>
+                <h2>{{ jumlah_netral }}</h2>
+                <small>{{ persen_netral }}% dari total data</small>
+            </div>
+
+            <div class="icon-circle blue">
+                <i class="bi bi-emoji-neutral"></i>
+            </div>
+        </div>
+
+        <div class="spark">
+    <div id="spark-netral"></div>
+</div>
+    </div>
+    <div class="stat-card negatif">
+        <div class="stat-top">
+            <div>
+                <span>SENTIMEN NEGATIF</span>
+                <h2>{{ jumlah_negatif }}</h2>
+                <small>{{ persen_negatif }}% dari total data</small>
+            </div>
+            <div class="icon-circle red-outline">
+                <i class="bi bi-emoji-frown"></i>
+            </div>
+        </div>
+        <div class="spark">
+    <div id="spark-negatif"></div>
+</div>
+    </div>
+</div>
+
+<!-- =======================
+     BAR CHART + PIE CHART
+======================== -->
+
+<div class="chart-grid">
+
+    <div class="chart-box chart-bar">
+
+        <h4>DISTRIBUSI SENTIMEN (BAR CHART)</h4>
+
+        <div id="barChart"></div>
+
+    </div>
+
+    <div class="chart-box chart-pie">
+
+        <h4>DISTRIBUSI SENTIMEN (PIE CHART)</h4>
+
+        <div id="pieChart"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =======================
+      WORD CLOUD
+======================== -->
+
+<div class="wordcloud-grid">
+
+    <div class="chart-box word-box">
+
+        <h4>WORD CLOUD POSITIF</h4>
+
+        <img src="{{ url_for('static', filename='images/wordcloud_positif.png') }}">
+
+    </div>
+
+    <div class="chart-box">
+
+        <h4>WORD CLOUD NETRAL</h4>
+
+        <img src="{{ url_for('static', filename='images/wordcloud_netral.png') }}">
+
+    </div>
+
+    <div class="chart-box">
+
+        <h4>WORD CLOUD NEGATIF</h4>
+
+        <img src="{{ url_for('static', filename='images/wordcloud_negatif.png') }}">
+
+    </div>
+
+</div>
+
+
+<!-- =======================
+     EVALUASI MODEL
+======================== -->
+
+<div class="evaluation-layout">
+
+    <!-- ===================
+         CONFUSION MATRIX
+    ==================== -->
+    <div class="chart-box">
+
+        <h4>CONFUSION MATRIX</h4>
+
+        <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}">
+
+    </div>
+
+    <!-- ===================
+         EVALUASI MODEL
+    ==================== -->
+    <div class="chart-box evaluation-card">
+
+        <h4>EVALUASI MODEL</h4>
+
+        <div class="metric-grid">
+
+            <div class="metric-card accuracy">
+                <span>Accuracy</span>
+                <h2>{{ accuracy }}%</h2>
+            </div>
+
+            <div class="metric-card precision">
+                <span>Precision</span>
+                <h2>{{ precision }}%</h2>
+            </div>
+
+            <div class="metric-card recall">
+                <span>Recall</span>
+                <h2>{{ recall }}%</h2>
+            </div>
+
+            <div class="metric-card f1">
+                <span>F1-Score</span>
+                <h2>{{ f1_score }}%</h2>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ===================
+         KESIMPULAN
+    ==================== -->
+    <div class="chart-box summary-card">
+
+        <div class="summary-header">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h4>Kesimpulan Evaluasi Model</h4>
+
+        </div>
+
+        <div class="summary-body">
+
+            <p>
+                Berdasarkan hasil evaluasi menggunakan metode
+                <strong>Naïve Bayes</strong>,
+                model memperoleh nilai
+                <strong>accuracy sebesar {{ accuracy }}%</strong>
+                dengan nilai
+                <strong>precision</strong>,
+                <strong>recall</strong>,
+                dan
+                <strong>F1-Score</strong>
+                yang relatif seimbang. Hasil tersebut menunjukkan bahwa model memiliki performa yang baik dan mampu mengklasifikasikan sentimen komentar secara konsisten.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

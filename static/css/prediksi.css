@@ -1,0 +1,465 @@
+/* ===================================================
+   HERO
+=================================================== */
+
+.hero{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:35px 40px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+
+    margin-bottom:25px;
+
+}
+
+.hero-text{
+
+    max-width:70%;
+
+}
+
+.hero-text h1{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:#B11226;
+
+    margin-bottom:12px;
+
+}
+
+.hero-text p{
+
+    font-size:16px;
+
+    color:#5d6674;
+
+    line-height:1.8;
+
+    margin:0;
+
+}
+
+.hero-image{
+
+    width:120px;
+    height:120px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:#fde8e8;
+
+}
+
+.hero-image i{
+
+    font-size:60px;
+
+    color:#B11226;
+
+}
+
+
+/* ===================================================
+   CARD
+=================================================== */
+
+.prediction-card{
+
+    padding:30px;
+
+}
+
+
+/* ===================================================
+   TITLE
+=================================================== */
+
+.section-title{
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#B11226;
+
+    margin-bottom:28px;
+
+}
+
+.section-title i{
+
+    font-size:22px;
+
+}
+
+
+/* ===================================================
+   LABEL
+=================================================== */
+
+.form-label{
+
+    font-weight:700;
+
+    color:#374151;
+
+    margin-bottom:10px;
+
+}
+
+
+/* ===================================================
+   CONTOH BUTTON
+=================================================== */
+
+.example-buttons{
+
+    display:flex;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+
+    margin-top:12px;
+
+}
+
+.btn-example{
+
+    border:none;
+
+    border-radius:40px;
+
+    padding:11px 20px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    transition:.25s;
+
+    cursor:pointer;
+
+}
+
+.btn-example:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+
+/* POSITIF */
+
+.positive{
+
+    background:#eafaf0;
+
+    color:#22c55e;
+
+}
+
+/* NETRAL */
+
+.neutral{
+
+    background:#eaf4ff;
+
+    color:#3498db;
+
+}
+
+/* NEGATIF */
+
+.negative{
+
+    background:#fde8e8;
+
+    color:#ef4444;
+
+}
+
+
+/* ===================================================
+   TEXTAREA
+=================================================== */
+
+textarea{
+
+    resize:none;
+
+}
+
+.form-control{
+
+    border-radius:16px;
+
+    border:1px solid #d9d9d9;
+
+    padding:18px;
+
+    font-size:15px;
+
+    line-height:1.8;
+
+    transition:.25s;
+
+}
+
+.form-control:focus{
+
+    border-color:#B11226;
+
+    box-shadow:0 0 0 .2rem rgba(177,18,38,.15);
+
+}
+
+
+/* ===================================================
+   BUTTON
+=================================================== */
+
+.form-action{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+}
+
+.btn-predict{
+
+    background:#B11226;
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:13px 28px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn-predict:hover{
+
+    background:#930f20;
+
+    color:#fff;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(177,18,38,.25);
+
+}
+
+
+/* ===================================================
+   HASIL
+=================================================== */
+
+.result-card{
+
+    margin-top:25px;
+
+    padding:30px;
+
+}
+
+.result-content{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:28px;
+
+}
+
+.result-icon{
+
+    width:110px;
+    height:110px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    font-size:58px;
+
+    flex-shrink:0;
+
+}
+
+
+/* WARNA ICON */
+
+.result-card.success .result-icon{
+
+    background:#eafaf0;
+
+}
+
+.result-card.warning .result-icon{
+
+    background:#eaf4ff;
+
+}
+
+.result-card.danger .result-icon{
+
+    background:#fde8e8;
+
+}
+
+
+/* ===================================================
+   INFO
+=================================================== */
+
+.result-info{
+
+    flex:1;
+
+}
+
+.result-info h2{
+
+    font-size:36px;
+
+    font-weight:700;
+
+    color:#1f2937;
+
+    margin-bottom:12px;
+
+}
+
+.result-info p{
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    color:#5d6674;
+
+}
+
+
+/* ===================================================
+   KOMENTAR
+=================================================== */
+
+.result-comment{
+
+    margin-top:24px;
+
+}
+
+.result-comment h6{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+
+}
+
+.comment-box{
+
+    background:#f9fafb;
+
+    border-left:5px solid #B11226;
+
+    padding:18px;
+
+    border-radius:12px;
+
+    line-height:1.8;
+
+    color:#374151;
+
+}
+
+
+/* ===================================================
+   RESPONSIVE
+=================================================== */
+
+@media(max-width:992px){
+
+.hero{
+
+    flex-direction:column;
+
+    text-align:center;
+
+    gap:25px;
+
+}
+
+.hero-text{
+
+    max-width:100%;
+
+}
+
+.result-content{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.form-action{
+
+    justify-content:center;
+
+}
+
+}

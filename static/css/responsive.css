@@ -1,0 +1,265 @@
+/* =====================================================================
+   RESPONSIVE.CSS
+   Dimuat PALING TERAKHIR (lihat base.html) supaya semua override di
+   sini menang atas topbar.css / footer.css yang dimuat sebelumnya.
+   ===================================================================== */
+
+/* =====================================================================
+   TOMBOL HAMBURGER MOBILE & BACKDROP
+   Disembunyikan secara default (desktop). Hanya tampil <=768px.
+   Elemennya sendiri sudah ada di base.html (dirender di semua halaman).
+   ===================================================================== */
+.mobile-menu-btn{
+    position:fixed;
+    top:16px;
+    left:16px;
+    z-index:1010;
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:12px;
+    background:#b40016;
+    color:#fff;
+    font-size:22px;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 14px rgba(0,0,0,.25);
+    cursor:pointer;
+}
+
+.sidebar-backdrop{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    z-index:990;
+}
+
+/* =====================================================================
+   TABLET (<=992px)
+   ===================================================================== */
+@media (max-width: 992px){
+
+    .stats-grid{
+        grid-template-columns:repeat(2, 1fr);
+    }
+
+    .chart-grid{
+        grid-template-columns:1fr;
+    }
+
+    .wordcloud-grid{
+        grid-template-columns:repeat(2, 1fr);
+    }
+
+    .evaluation-layout{
+        grid-template-columns:1fr;
+    }
+
+    /* Topbar: banner background jadi terlalu sempit untuk ditampilkan
+       berdampingan dengan teks di lebar ini - dimatikan supaya teks
+       tidak tertindih/tabrakan dengan gambar. */
+    .topbar{
+        background-image:none;
+        min-height:auto;
+        padding:28px 32px;
+    }
+
+    .hero-left{
+        width:100%;
+    }
+}
+
+/* =====================================================================
+   MOBILE (<=768px)
+   Sidebar berubah jadi off-canvas (slide-in dari kiri) memakai
+   MEKANISME TOGGLE YANG SAMA dari app.js (class "collapsed" di
+   .sidebar & "sidebar-collapsed" di body) - tidak ada JS baru untuk
+   ini, cuma arti class-nya "dibalik" khusus di lebar ini:
+     - Desktop: .collapsed = sidebar menyempit jadi rel ikon
+     - Mobile : .collapsed = sidebar TERBUKA (slide masuk)
+   ===================================================================== */
+@media (max-width: 768px){
+
+    .mobile-menu-btn{
+        display:flex;
+    }
+
+    /* Sembunyikan tombol hamburger mengambang saat sidebar sudah
+       terbuka - toggle-btn di dalam header sidebar sudah cukup
+       untuk menutupnya, supaya tidak ada 2 tombol tumpang tindih. */
+    body.sidebar-collapsed .mobile-menu-btn{
+        display:none;
+    }
+
+    body.sidebar-collapsed .sidebar-backdrop{
+        display:block;
+    }
+
+    .sidebar{
+        width:260px;
+        transform:translateX(-100%);
+        transition:transform .35s ease;
+    }
+
+    .sidebar.collapsed{
+        width:260px;
+        transform:translateX(0);
+    }
+
+    /* Di mobile, "collapsed" berarti terbuka penuh - jadi tampilan
+       rel-ikon (dari sidebar.css/topbar.css) perlu dikembalikan
+       ke tampilan normal (logo + teks menu terlihat). */
+    .sidebar.collapsed .logo-text{
+        display:block;
+    }
+
+    .sidebar.collapsed .sidebar-header{
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+        gap:0;
+    }
+
+    .sidebar.collapsed .toggle-btn{
+        order:0;
+    }
+
+    .sidebar.collapsed .sidebar-logo{
+        flex-direction:row;
+        justify-content:flex-start;
+        gap:10px;
+    }
+
+    .sidebar.collapsed .menu-item{
+        justify-content:flex-start;
+        padding:13px 16px;
+    }
+
+    .sidebar.collapsed .menu-item span{
+        display:inline;
+    }
+
+    .sidebar.collapsed .menu-item i{
+        margin:0;
+        font-size:20px;
+    }
+
+    /* Main content selalu full width di mobile, sidebar mengambang
+       di atasnya (off-canvas), bukan mendorong kontennya. */
+    .main-content,
+    .sidebar.collapsed ~ .main-content{
+        margin-left:0;
+        width:100%;
+        padding:20px 16px 32px;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2, 1fr);
+        gap:10px;
+    }
+
+    .wordcloud-grid{
+        grid-template-columns:1fr;
+    }
+
+    .metric-grid{
+        grid-template-columns:repeat(2, 1fr);
+    }
+
+    .topbar{
+        padding:22px;
+        text-align:left;
+    }
+
+    .hero-title h1{ font-size:21px; }
+    .hero-title h5{ font-size:15px; }
+    .hero-title p{ font-size:13.5px; }
+}
+
+/* =====================================================================
+   HP KECIL (<=576px)
+   ===================================================================== */
+@media (max-width: 576px){
+
+    .stats-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stat-top h2{
+        font-size:24px;
+    }
+
+    .metric-grid{
+        grid-template-columns:1fr;
+    }
+
+    .metric-card h2{
+        font-size:28px;
+    }
+
+    /* Hero halaman Prediksi */
+    .hero{
+        padding:24px 20px;
+    }
+
+    .hero-text h1{
+        font-size:24px;
+    }
+
+    .hero-text p{
+        font-size:14px;
+    }
+
+    .hero-image{
+        width:80px;
+        height:80px;
+    }
+
+    .hero-image i{
+        font-size:38px;
+    }
+
+    .section-title{
+        font-size:19px;
+    }
+
+    .example-buttons{
+        gap:8px;
+    }
+
+    .btn-example{
+        padding:9px 14px;
+        font-size:12.5px;
+    }
+
+    .prediction-card,
+    .chart-box{
+        padding:16px;
+    }
+
+    /* Hasil Prediksi */
+    .result-content{
+        gap:16px;
+    }
+
+    .result-icon{
+        width:80px;
+        height:80px;
+        font-size:40px;
+    }
+
+    .result-info h2{
+        font-size:24px;
+    }
+
+    .result-info p{
+        font-size:14px;
+    }
+
+    .comment-box{
+        padding:14px;
+        font-size:14px;
+    }
+}

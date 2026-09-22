@@ -1,0 +1,156 @@
+/* ===========================
+   SIDEBAR
+=========================== */
+
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:220px;
+    height:100vh;
+    background:linear-gradient(180deg,#b40016 0%,#68000d 60%,#140000 100%);
+    display:flex;
+    flex-direction:column;
+    padding:20px 16px;
+    transition:.35s ease;
+    z-index:1000;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.sidebar-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:35px;
+}
+
+.toggle-btn{
+    width:36px;
+    height:36px;
+    border:none;
+    background:none;
+    color:#fff;
+    font-size:24px;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.toggle-btn:hover{
+    background:rgba(255,255,255,.12);
+}
+
+/* ===========================
+   LOGO
+=========================== */
+
+.sidebar-logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex:1;
+}
+
+.sidebar-logo img{
+    width:42px;
+    flex-shrink:0;
+}
+
+.logo-text{
+    transition:.3s;
+}
+
+.logo-text h2{
+    margin:0;
+    color:#fff;
+    font-size:18px;
+    font-weight:800;
+    line-height:1.1;
+    letter-spacing:.5px;
+}
+
+/* ===========================
+   MENU
+=========================== */
+
+.sidebar-menu{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:13px 16px;
+    color:#fff;
+    text-decoration:none;
+    border-radius:14px;
+    font-size:15px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.menu-item i{
+    font-size:20px;
+    min-width:22px;
+    text-align:center;
+}
+
+.menu-item span{
+    transition:.3s;
+}
+
+.menu-item:hover{
+    background:rgba(255,255,255,.08);
+}
+
+.menu-item.active{
+    background:#98131b;
+    box-shadow:0 6px 15px rgba(0,0,0,.18);
+}
+
+/* ===========================
+   COLLAPSED
+=========================== */
+
+.sidebar.collapsed{
+    width:82px;
+}
+
+.sidebar.collapsed .logo-text{
+    display:none;
+}
+
+.sidebar.collapsed .sidebar-header{
+    justify-content:center;
+}
+
+.sidebar.collapsed .sidebar-logo{
+    justify-content:center;
+}
+
+.sidebar.collapsed .sidebar-logo img{
+    width:42px;
+}
+
+.sidebar.collapsed .menu-item{
+    justify-content:center;
+    padding:13px;
+}
+
+.sidebar.collapsed .menu-item span{
+    display:none;
+}
+
+.sidebar.collapsed .menu-item i{
+    margin:0;
+    font-size:22px;
+}

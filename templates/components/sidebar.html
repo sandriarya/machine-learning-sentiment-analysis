@@ -1,0 +1,33 @@
+<aside class="sidebar">
+    <div class="sidebar-header">
+    <div class="sidebar-logo">
+        <img src="{{ url_for('static', filename='images/garuda.png') }}">
+
+            <div class="logo-text">
+                <h2>TIMNAS</h2>
+                <h2>INDONESIA</h2>
+            </div>
+
+        </div>
+
+        <button class="toggle-btn" id="toggleSidebar">
+            <i class="bi bi-list"></i>
+        </button>
+
+    </div>
+
+    <nav class="sidebar-menu">
+
+        <a href="{{ url_for('dashboard') }}"
+           class="menu-item {% if request.endpoint=='dashboard' %}active{% endif %}">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="{{ url_for('prediksi') }}"
+           class="menu-item {% if request.endpoint=='prediksi' %}active{% endif %}">
+            <i class="bi bi-chat-square-text"></i>
+            <span>Prediksi Sentimen</span>
+        </a>
+    </nav>
+</aside>

@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+
+{% block title %}Prediksi Sentimen{% endblock %}
+
+{% block content %}
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<div class="hero">
+
+    <div class="hero-text">
+
+        <h1>Prediksi Sentimen</h1>
+
+        <p>
+            Masukkan komentar Instagram untuk mengetahui hasil klasifikasi
+            sentimen menggunakan metode
+            <strong>Naïve Bayes</strong>.
+        </p>
+
+    </div>
+
+    <div class="hero-image">
+
+        <i class="bi bi-chat-square-text-fill"></i>
+
+    </div>
+
+</div>
+
+
+<!-- =======================================================
+     FORM PREDIKSI
+======================================================= -->
+
+<div class="chart-box prediction-card">
+
+    <h3 class="section-title">
+
+        <i class="bi bi-pencil-square"></i>
+
+        Komentar Instagram
+
+    </h3>
+
+    <form method="POST">
+
+        <div class="mb-4">
+
+            <label class="form-label">
+
+                Contoh Komentar
+
+            </label>
+
+            <div class="example-buttons">
+
+                <button
+                    type="button"
+                    class="btn-example positive"
+                    onclick="isiPositif()">
+
+                    <i class="bi bi-emoji-smile-fill"></i>
+
+                    Contoh Positif
+
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-example neutral"
+                    onclick="isiNetral()">
+
+                    <i class="bi bi-emoji-neutral-fill"></i>
+
+                    Contoh Netral
+
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-example negative"
+                    onclick="isiNegatif()">
+
+                    <i class="bi bi-emoji-frown-fill"></i>
+
+                    Contoh Negatif
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="mb-4">
+
+            <label class="form-label">
+
+                Komentar
+
+            </label>
+
+            <textarea
+                id="komentar"
+                name="komentar"
+                class="form-control"
+                rows="7"
+                placeholder="Masukkan komentar Instagram atau gunakan contoh komentar di atas...">{{ komentar }}</textarea>
+
+        </div>
+
+
+        <div class="form-action">
+
+            <button class="btn btn-predict">
+
+                <i class="bi bi-search"></i>
+
+                Prediksi Sentimen
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<!-- =======================================================
+     HASIL PREDIKSI
+======================================================= -->
+
+{% if hasil %}
+
+<div id="hasil-prediksi" class="chart-box result-card {{ warna }}">
+
+    <h3 class="section-title">
+
+        <i class="bi bi-bar-chart-fill"></i>
+
+        Hasil Prediksi
+
+    </h3>
+
+    <div class="result-content">
+
+        <div class="result-icon">
+
+            {{ emoji }}
+
+        </div>
+
+        <div class="result-info">
+
+            <h2 class="text-capitalize">
+
+                {{ hasil }}
+
+            </h2>
+
+            <p>
+
+                Komentar yang dimasukkan diprediksi termasuk ke dalam
+                kategori sentimen
+                <strong>{{ hasil }}</strong>
+                berdasarkan model
+                <strong>Multinomial Naïve Bayes</strong>.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="result-comment">
+
+        <h6>
+
+            <i class="bi bi-chat-left-text"></i>
+
+            Komentar yang Dianalisis
+
+        </h6>
+
+        <div class="comment-box">
+
+            {{ komentar }}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const hasil = document.getElementById("hasil-prediksi");
+
+    if (hasil) {
+        hasil.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+
+});
+</script>
+
+<script src="{{ url_for('static', filename='js/prediksi.js') }}"></script>
+
+{% endblock %}
