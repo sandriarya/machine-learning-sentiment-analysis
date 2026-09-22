@@ -24,12 +24,6 @@ TF-IDF digunakan untuk mengubah teks menjadi representasi numerik berdasarkan ti
 Algoritma **Multinomial Naïve Bayes** digunakan sebagai model klasifikasi untuk menentukan kategori sentimen komentar.
 Model dilatih menggunakan fitur hasil transformasi TF-IDF.
 
-Konfigurasi model:
-
-```python
-MultinomialNB(alpha=0.1)
-```
-
 Model yang telah dilatih disimpan dalam format `.pkl` sehingga dapat digunakan kembali tanpa melakukan proses training dari awal.
 
 ---
